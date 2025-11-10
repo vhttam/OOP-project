@@ -1,4 +1,4 @@
-package Nguoi;
+package OOP3.Nguoi.Nguoi;
 
 import java.util.Scanner;
 
@@ -41,13 +41,16 @@ abstract public class NhanVien extends Nguoi {
 		this.caLamViec = caLamViec;
 	}
 	
+	public NhanVien() {
+	}
+	
 	@Override
 	public void ktr_id() {
-		if (id.startsWith("NV")) {
+		if (id.startsWith("NV") && id != "NV000") {
 			super.id = id;
 		}
 		else {
-			super.id = "NV001";
+			super.id = "NV000";
 			System.out.println("ID nhan vien khong hop le");
 			System.out.println("Thay doi ID thanh mac dinh la: " + super.getid());
 		}
@@ -99,21 +102,26 @@ abstract public class NhanVien extends Nguoi {
 	
 	abstract float tinhLuong();
 	
-	@SuppressWarnings("resource")
-	public void nhap() {
-		Scanner sc = new Scanner (System.in);
-		super.nhap();
+	
+	@Override
+	public void nhap(Scanner sc) {
+		super.nhap(sc);
+		try {
+		this.ktr_id();
 		System.out.println("Moi nhap so ngay nghi: ");
-		this.setsoNgayNghi(sc.nextInt());
+		this.setsoNgayNghi(Integer.parseInt(sc.nextLine()));
 		System.out.println("Moi nhap luong thuong: ");
-		this.setluongThuong(sc.nextFloat());
-		sc.nextLine();
+		this.setluongThuong(Float.parseFloat(sc.nextLine()));
 		System.out.println("Moi nhap ca lam viec: ");
 		this.setcaLamViec(sc.nextLine());
+		this.ktr_caLamViec();
+		} catch (NumberFormatException e) {
+		        System.out.println("Loi: Nhap sai dinh dang so. Mot so thong tin bi thiet lap mac dinh.");
+		}
 	}
 	
+	@Override
 	public void xuat() {
-		this.ktr_id();
 		super.xuat();
 		System.out.println("So ngay nghi: " + this.getsoNgayNghi());
 		System.out.println("Luong thuong: " + this.getluongThuong());

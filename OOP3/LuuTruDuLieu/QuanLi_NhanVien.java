@@ -91,7 +91,7 @@ public class QuanLi_NhanVien extends Luu_Tru_Du_Lieu {
 	
 	@Override
 	public void writeTXT() {
-		File txtNV = new File ("../DSNhanVien.txt");
+		File txtNV = new File ("src/OOP3/LuuTruDuLieu/DSNhanVien.txt");
 		
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(txtNV))) {
 			for (NhanVien nv : dsNhanVien) {
@@ -172,6 +172,24 @@ public class QuanLi_NhanVien extends Luu_Tru_Du_Lieu {
 	
 	
 	public void themNhanVien(Scanner sc) {
+		
+		int soluong;
+		try {
+			System.out.println("Moi nhap so luong nhan vien muon them: ");
+			String input = sc.nextLine().trim();
+			soluong = Integer.parseInt(input);
+			
+			if (soluong <= 0) {
+				System.out.println("Loi so luong phai luon duong");
+				return;
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Loi");
+			return;
+		}
+		for (int i = 0; i < soluong; i++) {
+			int j = i+1;
+			System.out.println("---Moi nhap nhan vien thu " + j + " ---");
 		try {
 		NhanVien nvm = null;
 		
@@ -192,7 +210,6 @@ public class QuanLi_NhanVien extends Luu_Tru_Du_Lieu {
 			return;
 		}
 		
-		System.out.println("Moi ban nhap thong tin nhan vien moi: ");
 		nvm.nhap(sc);
 		
 		if (nvm.getid() == null || nvm.getid().isEmpty()) {
@@ -212,6 +229,7 @@ public class QuanLi_NhanVien extends Luu_Tru_Du_Lieu {
 		} catch (Exception e) {
 			System.out.println("Loi du lieu");
 			e.printStackTrace();
+		}
 		}
 	}
 	

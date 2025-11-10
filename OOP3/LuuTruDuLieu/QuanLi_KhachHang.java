@@ -73,7 +73,7 @@ public class QuanLi_KhachHang extends Luu_Tru_Du_Lieu {
 	
 	@Override
 	public void writeTXT() {
-		File txtNV = new File ("../DSKhachHang.txt");
+		File txtNV = new File ("src/OOP3/LuuTruDuLieu/DSKhachHang.txt");
 		
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(txtNV))) {
 			for (KhachHang kh : dsKhachHang) {

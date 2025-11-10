@@ -1,38 +1,50 @@
-package Nguoi;
+package OOP3.Nguoi.Nguoi;
 
 import java.util.Scanner;
 
-public class NhanVien_BanHang extends NhanVien {
-	private float hoaHong;
+public class NhanVien_BanHang extends NhanVien implements TinhThuongDoanhThu {
+	private float doanhSo;
 	
-	public float gethoaHong() {
-		return hoaHong;
+	public float getdoanhSo() {
+		return doanhSo;
 	}
-	public void sethoaHong(float hoaHong) {
-		this.hoaHong = hoaHong;
+	public void setdoanhSo(float doanhSo) {
+		this.doanhSo = doanhSo;
 	}
 	
-	public NhanVien_BanHang (String id, String hoten, String gioitinh, String namsinh, int soNgayNghi, float luongThuong, String caLamViec, float hoaHong) {
+	public NhanVien_BanHang (String id, String hoten, String gioitinh, String namsinh, int soNgayNghi, float luongThuong, String caLamViec, float doanhSo) {
 		super(id, hoten, gioitinh, namsinh, soNgayNghi, luongThuong, caLamViec);
-		this.hoaHong = hoaHong;
+		this.doanhSo = doanhSo;
+	}
+	
+	public NhanVien_BanHang() {
 	}
 	
 	@Override
 	public float tinhLuong() {
-		return (super.getLuongCB() * super.hesoXepLoai() * super.hesoCa()) + super.getluongThuong() + this.gethoaHong();
+		return (super.getLuongCB() * super.hesoXepLoai() * super.hesoCa()) + super.getluongThuong() + this.tinhThuong();
 	}
 	
-	@SuppressWarnings("resource")
-	public void nhap() {
-		Scanner sc = new Scanner (System.in);
-		super.nhap();
-		System.out.println("Moi nhap tien hoa hong: ");
-		this.sethoaHong(sc.nextFloat());
+	@Override
+	public float tinhThuong() {
+		return doanhSo * 0.05f;
 	}
 	
+	@Override
+	public void nhap(Scanner sc) {
+		super.nhap(sc);
+		try {
+		System.out.println("Moi nhap doanh so: ");
+		this.setdoanhSo(Float.parseFloat(sc.nextLine()));
+		} catch (NumberFormatException e) {
+			System.out.println("Loi du lieu");
+		}
+	}
+	
+	@Override
 	public void xuat() {
 		super.xuat();
-		System.out.println("Tien hoa hong nhan duoc: " + this.gethoaHong());
-		System.out.println("Luong: " + this.tinhLuong());
+		System.out.println("Doanh so kiem duoc: " + this.getdoanhSo());
+		System.out.printf("Luong: %.1f\n" ,this.tinhLuong());
 	}
 }

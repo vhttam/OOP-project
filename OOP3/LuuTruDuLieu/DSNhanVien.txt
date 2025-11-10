@@ -1,0 +1,2 @@
+Thu Ngan, NV000,Nguyen Van A,Nam,2000,1,2300.0,Toi,10000.0
+Ban Hang, NV001,Nguyen Van B,Nu,2000,0,35000.0,Sang,10000.0

@@ -66,6 +66,7 @@ public class excute {
 						case 5:
 							System.out.println("--- 5. THEM KHACH HANG ---");
 							qlkh.themKhachHang(sc);
+							qlkh.writeTXT();
 							break;
 						case 6:
 							System.out.println("--- 6. TIM KIEM KHACH HANG ---");
@@ -89,9 +90,8 @@ public class excute {
 							break;
 							
 						case 0:
-							System.out.println("Dang thuc hien luu du lieu vao file...");
+							System.out.println("Dang thuc hien luu du lieu...");
 							qlnv.writeTXT();
-							qlkh.writeTXT();
 							System.out.println("Da luu thanh cong. Tam biet!");
 							break;
 							
